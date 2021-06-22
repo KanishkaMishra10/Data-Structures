@@ -216,7 +216,7 @@ int main(){
     node *result;
     BinarySearchTree bst;
     do{
-        cout<<" 1: Create A binary Search Tree \n 2: Search an element\n 3: To delete a node \n";
+        cout<<"\n 1: Create A binary Search Tree \n 2: Search an element\n 3: To delete a node \n 4: To count total nodes. \n";
         cin>>choice;
         switch(choice){
             case 1:
@@ -254,6 +254,10 @@ int main(){
                     bst.levelOrderTraversal();
                     break;
                 }
+            case 4:
+                bst.count_nodes();
+                cout<<endl;
+                break;
             default:
                 cout<<"Inavlid Choice! \n";
         }
