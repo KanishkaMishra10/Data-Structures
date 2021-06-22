@@ -31,16 +31,16 @@ class BinarySearchTree:public node{
     void count_leaf_nodes(node *);
 public:
     void create();
-    node *search(int value);
-    void delete_node(int n);
-    bool printLevel(node *root,int level);
+    node *search(int value);                    //Function to search a particular node in the tree
+    void delete_node(int n);                    //Function to delete a node
+    bool printLevel(node *root,int level);      //Function to Display tree level wise
     void levelOrderTraversal();
-    bool check_empty();
-    void count_nodes();
-    void count_leaf_nodes();
+    bool check_empty();                         //Function to check if a tree is empty or not
+    void count_nodes();                         //Function to count total nodes of a tree
+    void count_leaf_nodes();                    //Function to count total leaf nodes of a tree
 };
 
-int BinarySearchTree::count=0;
+int BinarySearchTree::count=0;                  //Initializing a static data member
 
 void BinarySearchTree::create(){
     node *temp, *newnode;
@@ -211,6 +211,24 @@ void BinarySearchTree::count_nodes(){
     count_nodes(root);
     cout<<"Total number of nodes: "<<count;
 }
+
+void BinarySearchTree::count_leaf_nodes(node *root){
+    if(root!=NULL){
+        if(root->left==NULL && root->right==NULL)
+            count++;
+        count_leaf_nodes(root->left);
+        count_leaf_nodes(root->right);
+    }
+    else{
+        return;
+    }
+}
+
+void BinarySearchTree::count_leaf_nodes(){
+    count=0;
+    count_leaf_nodes(root);
+    cout<<"Total Leaf nodes: "<<count<<endl;
+}
     
 int main(){
 
@@ -259,6 +277,9 @@ int main(){
             case 4:
                 bst.count_nodes();
                 cout<<endl;
+                break;
+            case 5:
+                bst.count_leaf_nodes();
                 break;
             default:
                 cout<<"Inavlid Choice! \n";
