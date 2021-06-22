@@ -28,6 +28,7 @@ class BinarySearchTree:public node{
     node *search(node *root,int value);
     void levelOrderTraversal(node *root);
     void count_nodes(node *);
+    void count_leaf_nodes(node *);
 public:
     void create();
     node *search(int value);
@@ -36,6 +37,7 @@ public:
     void levelOrderTraversal();
     bool check_empty();
     void count_nodes();
+    void count_leaf_nodes();
 };
 
 int BinarySearchTree::count=0;
