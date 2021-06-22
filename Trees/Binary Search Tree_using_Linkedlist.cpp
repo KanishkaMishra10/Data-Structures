@@ -23,9 +23,11 @@ public:
 };
 
 class BinarySearchTree:public node{
+    int static count;
     node* root;
     node *search(node *root,int value);
     void levelOrderTraversal(node *root);
+    void count_nodes(node *);
 public:
     void create();
     node *search(int value);
@@ -33,7 +35,10 @@ public:
     bool printLevel(node *root,int level);
     void levelOrderTraversal();
     bool check_empty();
+    void count_nodes();
 };
+
+int BinarySearchTree::count=0;
 
 void BinarySearchTree::create(){
     node *temp, *newnode;
@@ -187,6 +192,22 @@ bool BinarySearchTree::check_empty(){
         return true;
     }
     return false;
+}
+
+void BinarySearchTree::count_nodes(node *root){
+    if(root!=NULL){
+        count++;
+        count_nodes(root->left);
+        count_nodes(root->right);
+    }
+    else{
+        return;
+    }
+}
+
+void BinarySearchTree::count_nodes(){
+    count_nodes(root);
+    cout<<"Total number of nodes: "<<count;
 }
     
 int main(){
