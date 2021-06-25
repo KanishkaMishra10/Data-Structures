@@ -35,19 +35,19 @@ public:
     Tree(){
         root=NULL;
     }
-    void create();          //creates a tree
-    void preorder();
-    void inorder();
-    void postorder();
-    int check();            //to check if a tree is empty or not
+    void create();                            //creates a tree
+    void preorder();                          //Function for Pre-Order Traversal
+    void inorder();                           //Function for In-Order Traversal
+    void postorder();                         //Function for Post-Order Traversal
+    int check();                              //to check if a tree is empty or not
     void nonrec_preorder();
     void nonrec_inorder();
     void nonrec_postorder();
     bool printLevel(node *root,int level);
     void levelOrderTraversal(node *root);
     void levelOrderTraversal();
-    void copy(Tree &t);
-    void mirror(Tree &t);    
+    void copy(Tree &t);                        //Function to copy a tree
+    void mirror(Tree &t);                      //Function to form a mirror view of a tree
 };
 
 class stack{        //for non-recursive traversal
