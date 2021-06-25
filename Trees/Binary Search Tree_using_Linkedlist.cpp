@@ -287,4 +287,5 @@ int main(){
         cout<<"Run again: 1-YES, 0-NO \n";
         cin>>ans;
     }while(ans==1);
+    
 }
