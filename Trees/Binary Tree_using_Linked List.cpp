@@ -29,6 +29,8 @@ class Tree:public node{
     void preorder(node * currentnode);
     void inorder(node * currentnode);   //private declaration to keep the root node as private
     void postorder(node * currentnode);
+    node * copy(node *,node *);
+    node * mirror(node *,node *);
 public:
     Tree(){
         root=NULL;
@@ -44,7 +46,8 @@ public:
     bool printLevel(node *root,int level);
     void levelOrderTraversal(node *root);
     void levelOrderTraversal();
-    
+    void copy(Tree &t);
+    void mirror(Tree &t);    
 };
 
 class stack{        //for non-recursive traversal
@@ -271,6 +274,38 @@ void Tree::levelOrderTraversal(node *root){
 
 void Tree::levelOrderTraversal(){
     levelOrderTraversal(root);
+}
+
+void Tree::copy(Tree &t){
+    t.root=copy(root,t.root);
+}
+
+node * Tree::copy(node *root,node *root2){
+    if (root!=NULL){
+        root2 = new node();
+        root2->data=root->data;
+        root2->left=copy(root->left,root2->left);
+        root2->right=copy(root->right,root2->right);
+        return root2;
+    }
+    else
+        return NULL;
+}
+
+void Tree::mirror(Tree &t){
+    t.root=mirror(root,t.root);
+}
+
+node * Tree::mirror(node *root,node *root2){
+    if (root!=NULL){
+        root2 = new node();
+        root2->data=root->data;
+        root2->left=mirror(root->right,root2->left);
+        root2->right=mirror(root->left,root2->right);
+        return root2;
+    }
+    else
+        return NULL;
 }
 
 int main() {
